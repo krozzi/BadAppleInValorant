@@ -9,6 +9,7 @@ import os, time
 id_seen = []
 commands = ['run']
 
+
 def sendMsg(cid, message):
     data = {
         "cid": cid,
@@ -17,12 +18,12 @@ def sendMsg(cid, message):
     }
     response = requests.post(
         f"https://127.0.0.1:{auth.getConfig().get('port')}/chat/v6/messages",
-        headers=auth.getHeaders()),
-        verify=False,
-        json=data,
+        headers=auth.getHeaders(),
+    verify = False,
+    json = data,
     )
     return response
-    
+
 
 def runapple(cid):
     f = open('jap2.txt', 'r', encoding='utf8')
@@ -31,11 +32,11 @@ def runapple(cid):
     frames = frame_raw.split('SPLIT')
     init_time = time.time()
     while time.time() <= init_time + 218:
-#         *22 - fill in whitespace @ start
-        sendMsg(cid, ("発"*22) + ": " + frames[int((time.time() - init_time) * 20)])
+        #         *22 - fill in whitespace @ start
+        sendMsg(cid, ("発" * 22) + ": " + frames[int((time.time() - init_time) * 20)])
+
 
 def on_message(ws, message):
-
     res = json.loads(message)
     juicy = res[2]
 
@@ -45,7 +46,7 @@ def on_message(ws, message):
 
         if message['id'] not in id_seen:
             id_seen.append(message['id'])
-#             check if i sent it
+            #             check if i sent it
             if message['puuid'] == 'ae32c0ca-3de3-5086-9c69-2d25c8f664fd' and str(message['body']).startswith('.'):
                 args = str(message['body']).replace('.', '').split(' ')
                 # print(f"User pushed cmd {args[0]} with args {args[1:]}")

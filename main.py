@@ -3,12 +3,26 @@ import rel
 import ssl
 import auth
 import json
-
-import sendmsg
+import requests
 import os, time
 
 id_seen = []
 commands = ['run']
+
+def sendMsg(cid, message):
+    data = {
+        "cid": cid,
+        "message": message,
+        "type": "system"
+    }
+    response = requests.post(
+        f"https://127.0.0.1:{auth.getConfig().get('port')}/chat/v6/messages",
+        headers=auth.getHeaders()),
+        verify=False,
+        json=data,
+    )
+    return response
+    
 
 def runapple(cid):
     f = open('jap2.txt', 'r', encoding='utf8')
@@ -18,7 +32,7 @@ def runapple(cid):
     init_time = time.time()
     while time.time() <= init_time + 218:
 #         *22 - fill in whitespace @ start
-        sendmsg.postNewChatMessage(cid, ("発"*22) + ": " + frames[int((time.time() - init_time) * 20)])
+        sendMsg(cid, ("発"*22) + ": " + frames[int((time.time() - init_time) * 20)])
 
 def on_message(ws, message):
 
@@ -43,7 +57,7 @@ def on_message(ws, message):
                         if cid == 'this':
                             runapple(message["cid"])
                         else:
-                            sendmsg.postNewChatMessage(cid, 'bruh')
+                            sendMsg(cid, 'bruh')
 
 
 def on_error(ws, error):

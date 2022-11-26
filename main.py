@@ -30,6 +30,7 @@ def on_message(ws, message):
 
         if message['id'] not in id_seen:
             id_seen.append(message['id'])
+#             check if i sent it
             if message['puuid'] == 'ae32c0ca-3de3-5086-9c69-2d25c8f664fd' and str(message['body']).startswith('.'):
                 args = str(message['body']).replace('.', '').split(' ')
                 # print(f"User pushed cmd {args[0]} with args {args[1:]}")

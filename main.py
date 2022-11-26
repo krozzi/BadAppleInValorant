@@ -17,6 +17,7 @@ def runapple(cid):
     frames = frame_raw.split('SPLIT')
     init_time = time.time()
     while time.time() <= init_time + 218:
+#         *22 - fill in whitespace @ start
         sendmsg.postNewChatMessage(cid, ("発"*22) + ": " + frames[int((time.time() - init_time) * 20)])
 
 def on_message(ws, message):

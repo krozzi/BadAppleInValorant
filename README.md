@@ -1,0 +1,15 @@
+# BadAppleInValorant
+Bad Apple!! played inside Valorant party chat. Uses Valorant's in-game API, Python PIL, and some WebSocket event stuff.
+
+I used Japanese characters because, by default, the font that Valorant uses for English and symbols aren't monospaced, meaning that the final product would be all messed up cause of formatting issues. The fact that Valorant's chat system removes all whitespace and newlines doesn't help much either.
+
+Resolution of 27x10.
+
+
+
+
+## Credit
+Chion82's for making https://github.com/Chion82/ASCII_bad_apple, which I slightly modified to work better for my scenario.
+
+outrowender for https://github.com/outrowender/valorant-ingame-twitch-chat/tree/main/src, which i copied the auth.py from.
+

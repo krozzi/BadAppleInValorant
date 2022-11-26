@@ -5,7 +5,7 @@ I used Japanese characters because, by default, the font that Valorant uses for 
 
 Resolution of 27x10.
 
-
+First time using websockets so don't bully me too much lol
 
 
 ## Credit
